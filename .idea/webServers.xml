@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e5240816-9004-4e2d-8f11-38f9ad2f9695" name="tp51.andy.3qma.com" url="http://119.29.76.94">
+        <fileTransfer host="119.29.76.94" port="22" rootFolder="/home/wwwroot/tp51.andy.3qma.com" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
