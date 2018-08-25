@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    websocket 测试
+</body>
+
+<script>
+
+    var url = 'ws://tp51.andy.3qma.com:9501';
+
+    var ws = new WebSocket(url);
+
+    ws.onopen = function (event) {
+        ws.send('i from client !!')
+        console.log('connected-swoole-success')
+    }
+
+    ws.onmessage = function (evt) {
+        console.log("ws-server-return-data : " + evt.data)
+
+    }
+
+    ws.onclose = function (e) {
+        console.log("closed")
+    }
+
+    ws.onerror = function (event, err) {
+        console.log("error: " + err)
+    }
+
+</script>
+</html>

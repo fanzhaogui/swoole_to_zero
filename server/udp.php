@@ -12,3 +12,6 @@ $serv->on('Packet', function ($serv, $data, $clientInfo) {
 //启动服务器
 $serv->start();
 
+// 测试连接
+
+// nc -u 127.0.0.1 9502
