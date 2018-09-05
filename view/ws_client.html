@@ -6,12 +6,12 @@
 </head>
 <body>
     websocket 测试
+    <h1>view/ws_client.html</h1>
 </body>
 
 <script>
 
     var url = 'ws://tp51.andy.3qma.com:9501';
-
     var ws = new WebSocket(url);
 
     ws.onopen = function (event) {
@@ -19,12 +19,12 @@
         console.log('connected-swoole-success')
     }
 
-    ws.onmessage = function (evt) {
-        console.log("ws-server-return-data : " + evt.data)
+    ws.onmessage = function (event) {
+        console.log("ws-server-return-data : " + event.data)
 
     }
 
-    ws.onclose = function (e) {
+    ws.onclose = function (event) {
         console.log("closed")
     }
 
