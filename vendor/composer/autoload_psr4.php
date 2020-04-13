@@ -23,6 +23,7 @@ return array(
     'EasySwoole\\Spl\\' => array($vendorDir . '/easyswoole/spl/src'),
     'EasySwoole\\Session\\Test\\' => array($vendorDir . '/easyswoole/session/tests'),
     'EasySwoole\\Session\\' => array($vendorDir . '/easyswoole/session/src'),
+    'EasySwoole\\Redis\\' => array($vendorDir . '/easyswoole/redis/src'),
     'EasySwoole\\Pool\\Tests\\' => array($vendorDir . '/easyswoole/pool/tests'),
     'EasySwoole\\Pool\\' => array($vendorDir . '/easyswoole/pool/src'),
     'EasySwoole\\ORM\\' => array($vendorDir . '/easyswoole/orm/src'),
