@@ -1,0 +1,6 @@
+# ssc.3qma.com
+/api/common/banner/getAll
+
+/Api/Admin/Auth/login?account=xsk&password=123456
+
+/Api/Admin/User/getAll  # (等方法)
