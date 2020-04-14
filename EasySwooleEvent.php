@@ -4,6 +4,7 @@ namespace EasySwoole\EasySwoole;
 
 
 use App\Process\Consumer;
+use App\Process\ProcessOne;
 use App\Utility\Pool\MysqlPool;
 use App\Utility\Pool\RedisPool;
 use EasySwoole\EasySwoole\AbstractInterface\Event;
@@ -51,9 +52,24 @@ class EasySwooleEvent implements Event
 //		for ($i = 0; $i < $allNum; $i++) {
 //			ServerManager::getInstance()
 //				->getSwooleServer()
-//				->addProcess(new Consumer("consumer_{$i}"))
-//				->getProcess();
+//				->addProcess(new Consumer("consumer_{$i}")->getProcess());
 //		}
+
+        /*** 进程注册 - start ***/
+        $processConfig = new \EasySwoole\Component\Process\Config();
+        $processConfig->setProcessName('testProcess');
+        /**
+         * 传递给进程的参数
+         */
+        $processConfig->setArg([
+            'arg1' => time(),
+        ]);
+
+        $processOne = new ProcessOne($processConfig);
+        ServerManager::getInstance()
+            ->getSwooleServer()
+            ->addProcess($processOne->getProcess());
+        /*** 进程注册 - end ***/
 	}
 
 	public static function onRequest(Request $request, Response $response): bool

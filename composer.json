@@ -8,7 +8,8 @@
         "cbschuld/browser.php": "^1.9",
         "ipip/db": "^1.0",
         "easyswoole/ddl": "^1.0",
-        "easyswoole/redis": "^1.1"
+        "easyswoole/redis": "^1.1",
+        "easyswoole/task": "^1.1"
     },
     "autoload": {
         "psr-4": {
