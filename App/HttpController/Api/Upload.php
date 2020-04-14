@@ -57,7 +57,19 @@ class Upload extends ApiBase
 	 */
 	public function videofile()
 	{
-		$video = new Video($this->request());
+		try {
 
+			$video = new Video($this->request());
+			$rs = $video->upload();
+			if (!$rs) {
+				return $this->writeJson(401, '', '上传失败！');
+			}
+			return $this->writeJson(200, ['url' => $rs], '上传成功！');
+
+		} catch (\InvalidArgumentException $e) {
+			return $this->writeJson(402, '', $e->getMessage());
+		} catch (\Throwable $e) {
+			return $this->writeJson(403, '', '上传失败！');
+		}
 	}
 }
