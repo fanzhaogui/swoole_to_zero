@@ -32,6 +32,7 @@ return array(
     'EasySwoole\\Log\\' => array($vendorDir . '/easyswoole/log/src'),
     'EasySwoole\\Jwt\\' => array($vendorDir . '/easyswoole/jwt/src'),
     'EasySwoole\\Http\\' => array($vendorDir . '/easyswoole/http/src'),
+    'EasySwoole\\FastCache\\' => array($vendorDir . '/easyswoole/fast-cache/src'),
     'EasySwoole\\EasySwoole\\' => array($vendorDir . '/easyswoole/easyswoole/src'),
     'EasySwoole\\DDL\\Test\\' => array($vendorDir . '/easyswoole/ddl/test'),
     'EasySwoole\\DDL\\' => array($vendorDir . '/easyswoole/ddl/src'),

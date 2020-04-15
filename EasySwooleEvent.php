@@ -78,8 +78,8 @@ class EasySwooleEvent implements Event
 	public static function onRequest(Request $request, Response $response): bool
 	{
 		## process
-        $process = ServerManager::getInstance()->getProcess('testProcess');
-        $process->write('clear');
+        // $process = ServerManager::getInstance()->getProcess('testProcess');
+        // $process->write('clear');
 
 		return true;
 	}
