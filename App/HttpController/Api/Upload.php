@@ -107,10 +107,21 @@ class Upload extends ApiBase
      */
 	public function test()
     {
+		$config = new \EasySwoole\Redis\Config\RedisConfig([
+			'host' => '127.0.0.1',
+			'port' => '6379',
+			'serialize' => \EasySwoole\Redis\Config\RedisConfig::SERIALIZE_NONE,
+		]);
+		$redis = new \EasySwoole\Redis\Redis($config);
+
+		$redis->rPush('copy_log', 'current_time : ' . time());
+
+		return $this->writeJson(Status::CODE_OK, '', 'Ok');
+
         $email = 'fanzhaogui1990@163.com';
         $avatar = Gravatar::makeGravatar($email);
 
-        $this->writeJson(Status::CODE_OK, ['avatar' => $avatar]);
+        return $this->writeJson(Status::CODE_OK, ['avatar' => $avatar]);
     }
 
 }
