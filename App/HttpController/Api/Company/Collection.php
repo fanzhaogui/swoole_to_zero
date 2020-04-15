@@ -9,6 +9,9 @@
 namespace App\HttpController\Api\Company;
 
 
+use App\Process\ProcessOne;
+use EasySwoole\Component\Process\Config;
+use EasySwoole\EasySwoole\ServerManager;
 use EasySwoole\Http\Message\Status;
 
 
@@ -38,11 +41,23 @@ class Collection extends CompanyBase
 		}
 	}
 
-	// 访问
+    /**
+     * 访问记录
+     *
+     * @author: fanzhaogui
+     * @date 2020-04-15
+     * @return bool
+     */
 	public function visit()
 	{
 		$param = $this->request()->getRequestParam();
-		if ($param) {
+
+
+		/****/
+		ServerManager::getInstance()->getProcess('testProcess')->push($param);
+        /****/
+
+        if ($param) {
 			return $this->writeJson(Status::CODE_OK, '', '登出成功');
 		} else {
 			return $this->writeJson(Status::CODE_UNAUTHORIZED, '', 'fail');
