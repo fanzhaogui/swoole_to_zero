@@ -8,6 +8,7 @@
 namespace App\HttpController\Api;
 
 
+use App\Utility\Upload\Image;
 use App\Utility\Upload\Video;
 use EasySwoole\Http\Message\Status;
 
@@ -60,6 +61,29 @@ class Upload extends ApiBase
 		try {
 
 			$video = new Video($this->request());
+			$rs = $video->upload();
+			if (!$rs) {
+				return $this->writeJson(401, '', '上传失败！');
+			}
+			return $this->writeJson(200, ['url' => $rs], '上传成功！');
+
+		} catch (\InvalidArgumentException $e) {
+			return $this->writeJson(402, '', $e->getMessage());
+		} catch (\Throwable $e) {
+			return $this->writeJson(403, '', '上传失败！');
+		}
+	}
+
+
+	/**
+	 * @url Api/Upload/imgfile
+	 * @return bool
+	 */
+	public function imgfile()
+	{
+		try {
+
+			$video = new Image($this->request());
 			$rs = $video->upload();
 			if (!$rs) {
 				return $this->writeJson(401, '', '上传失败！');
