@@ -56,4 +56,9 @@ return [
 		//黑名单宽限期，以秒为单位，首次token刷新之后在此时间内原token可以继续访问
 		'blacklist_grace_period' => 60
 	],
+
+    ## socket
+    // 当前的域名
+    'HOST'           => 'http://127.0.0.1:9501',
+    'WEBSOCKET_HOST' => 'ws://127.0.0.1:9501',
 ];

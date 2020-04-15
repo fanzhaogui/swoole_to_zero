@@ -9,6 +9,7 @@ namespace App\HttpController\Api;
 
 
 use App\Utility\Upload\Image;
+use App\Utility\Gravatar;
 use App\Utility\Upload\Video;
 use EasySwoole\Http\Message\Status;
 
@@ -96,4 +97,20 @@ class Upload extends ApiBase
 			return $this->writeJson(403, '', '上传失败！');
 		}
 	}
+
+    /**
+     * 测试功能
+     *
+     * @url /Api/Upload/test
+     * @author: fanzhaogui
+     * @date 20200415
+     */
+	public function test()
+    {
+        $email = 'fanzhaogui1990@163.com';
+        $avatar = Gravatar::makeGravatar($email);
+
+        $this->writeJson(Status::CODE_OK, ['avatar' => $avatar]);
+    }
+
 }

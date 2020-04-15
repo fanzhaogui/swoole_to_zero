@@ -62,19 +62,25 @@ class EasySwooleEvent implements Event
          * 传递给进程的参数
          */
         $processConfig->setArg([
-            'arg1' => time(),
+            'size' => 3,
         ]);
 
         $processOne = new ProcessOne($processConfig);
-        ServerManager::getInstance()
-            ->getSwooleServer()
-            ->addProcess($processOne->getProcess());
+        try {
+            # ServerManager::getInstance()->addProcess($processOne);
+        } catch (\Throwable $e) {
+            echo 'defined process err ： ' . $e->getMessage();
+        }
+
         /*** 进程注册 - end ***/
 	}
 
 	public static function onRequest(Request $request, Response $response): bool
 	{
-		// TODO: Implement onRequest() method.
+		## process
+        // $process = ServerManager::getInstance()->getProcess('testProcess');
+        // $process->write('clear');
+
 		return true;
 	}
 
