@@ -5,6 +5,7 @@ namespace App\HttpController;
 
 
 use App\Task\TestTask;
+use EasySwoole\EasySwoole\Config;
 use EasySwoole\EasySwoole\Task\TaskManager;
 use EasySwoole\Http\AbstractInterface\Controller;
 use Swoole\Coroutine;
@@ -61,5 +62,47 @@ class Index extends BaseController
             $file = EASYSWOOLE_ROOT.'/src/Resource/Http/404.html';
         }
         $this->response()->write(file_get_contents($file));
+    }
+
+
+    /**
+     * /Index/test
+     * @author: fanzhaogui
+     * @date 2020-04-17
+     */
+    public function test()
+    {
+
+//        $headers = $this->request()->getHeaders();
+//        $token = $this->request()->getHeader('token'); // array ?
+//        return $this->writeJson(200, [$headers, $token]);
+
+        /*配置文件*/
+        $instance = \EasySwoole\EasySwoole\Config::getInstance();
+        // 获取配置信息
+        $jwtConfig = $instance->getConf('JWT');
+
+        // 解析
+        $parse = new \Lcobucci\JWT\Parser();
+        $tokenString = $this->request()->getHeader('token')[0] ?? '';
+
+        if (empty($tokenString)) {
+            $this->writeJson(404, '', 'fail:not exists token');
+        }
+
+        try {
+            $token = $parse->parse((string)$tokenString);
+            // 公司ID
+            $company_id = intval($token->getClaim('uid'));
+
+            $this->writeJson(200, [
+                'jwt' => $jwtConfig,
+                'company_id' => $company_id,
+            ], 'OK');
+
+        } catch (\Throwable $e) {
+            $this->writeJson(403, '', 'fail:could parse not successed');
+        }
+
     }
 }
