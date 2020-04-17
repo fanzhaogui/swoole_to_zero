@@ -9,11 +9,11 @@ namespace App\Utility\Upload;
 
 
 /**
- * 上传视频
+ * 图片
  *
  * @package App\Utility\Upload
  */
-class Video extends BaseUpload
+class Image extends BaseUpload
 {
 
 	/**
@@ -21,7 +21,7 @@ class Video extends BaseUpload
 	 *
 	 * @var string
 	 */
-	public $fileType = 'video';
+	public $fileType = 'image';
 
 	/**
 	 * 允许上传的文件类型
@@ -29,8 +29,8 @@ class Video extends BaseUpload
 	 * @var array $allowedFileExtTypes
 	 */
 	public $allowedFileExtTypes = [
-		'mp4',
-		'x-flv',
+		'jpeg',
+		'png',
 	];
 
 	/**
@@ -38,6 +38,6 @@ class Video extends BaseUpload
 	 *
 	 * @var int $maxSize
 	 */
-	public $maxSize = 1024;
+	public $maxSize = 2048;
 
 }

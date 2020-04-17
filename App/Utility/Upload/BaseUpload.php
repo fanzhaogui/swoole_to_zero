@@ -108,6 +108,7 @@ class BaseUpload
 	 */
 	public function upload()
 	{
+		var_dump($this->type, $this->fileType);
 		if ($this->type != $this->fileType) {
 			return false;
 		}
@@ -127,6 +128,7 @@ class BaseUpload
 
 		$flag = $videos->moveTo($file);
 		if (!$flag) {
+			var_dump($videos->getError());
 			return false;
 		}
 

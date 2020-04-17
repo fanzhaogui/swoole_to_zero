@@ -44,16 +44,11 @@ class EasySwooleEvent implements Event
 			->getConf('MYSQL'));
 		DbManager::getInstance()->addConnection(new Connection($config));
 
-		//
-		// $process = new Process();
-
 		// 注册消费进程
-//		$allNum = 3;
-//		for ($i = 0; $i < $allNum; $i++) {
-//			ServerManager::getInstance()
-//				->getSwooleServer()
-//				->addProcess(new Consumer("consumer_{$i}")->getProcess());
-//		}
+		$allNum = 3;
+		for ($i = 0; $i < $allNum; $i++) {
+			// ServerManager::getInstance()->addProcess(new Consumer("consumer_{$i}"));
+		}
 
         /*** 进程注册 - start ***/
         $processConfig = new \EasySwoole\Component\Process\Config();

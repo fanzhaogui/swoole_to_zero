@@ -20,4 +20,8 @@ go(function () {
 	$key = 'test';
 	var_dump($redis->set($key, 'test', 1000));
 	var_dump($redis->get($key));
+
+	$key = 'list';
+	var_dump($redis->rPush($key, '2'));
+	var_dump($redis->lPop($key));
 });
