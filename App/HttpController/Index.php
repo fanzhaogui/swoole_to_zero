@@ -82,12 +82,14 @@ class Index extends BaseController
         // 获取配置信息
         $jwtConfig = $instance->getConf('JWT');
 
+        $request = $this->request();
+
         // 解析
         $parse = new \Lcobucci\JWT\Parser();
-        $tokenString = $this->request()->getHeader('token')[0] ?? '';
+        $tokenString = $request->getHeader('token')[0] ?? '';
 
         if (empty($tokenString)) {
-            $this->writeJson(404, '', 'fail:not exists token');
+            return $this->writeJson(404, '', 'fail:not exists token');
         }
 
         try {
@@ -95,13 +97,22 @@ class Index extends BaseController
             // 公司ID
             $company_id = intval($token->getClaim('uid'));
 
-            $this->writeJson(200, [
-                'jwt' => $jwtConfig,
-                'company_id' => $company_id,
-            ], 'OK');
+            // 其他参数的获取
+            $data = $request->getRequestParam();
+            $get = $request->getQueryParams();
+            $post = $request->getParsedBody();
+            $content = $request->getBody()->__toString();
+            $raw_array = json_decode($content, true);
+            $header = $request->getHeaders();
+            $server = $request->getServerParams();
+            $cookie = $request->getCookieParams();
+
+
+            $rst = compact('data', 'all', 'get', 'post', 'content', 'raw_array', 'header', 'server', 'cookie', 'company_id', 'jwtConfig');
+            return $this->writeJson(200, $rst, 'OK');
 
         } catch (\Throwable $e) {
-            $this->writeJson(403, '', 'fail:could parse not successed');
+            return $this->writeJson(403, '', 'fail:could parse not successed');
         }
 
     }
