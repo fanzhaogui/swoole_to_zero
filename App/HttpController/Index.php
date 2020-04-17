@@ -107,6 +107,8 @@ class Index extends BaseController
             $server = $request->getServerParams();
             $cookie = $request->getCookieParams();
 
+            // 方式 1. 将获取的数据丢入异步task中
+            // 方式 2. 自定义进程处理 ：参考 \App\Process\Consumer
 
             $rst = compact('data', 'all', 'get', 'post', 'content', 'raw_array', 'header', 'server', 'cookie', 'company_id', 'jwtConfig');
             return $this->writeJson(200, $rst, 'OK');
