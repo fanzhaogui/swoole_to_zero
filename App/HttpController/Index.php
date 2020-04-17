@@ -107,10 +107,22 @@ class Index extends BaseController
             $server = $request->getServerParams();
             $cookie = $request->getCookieParams();
 
+            $rst = compact('data', 'all', 'get', 'post', 'content', 'raw_array', 'header', 'server', 'cookie', 'company_id', 'jwtConfig');
+
+            /** todo
             // 方式 1. 将获取的数据丢入异步task中
             // 方式 2. 自定义进程处理 ：参考 \App\Process\Consumer
+            $config = new \EasySwoole\Redis\Config\RedisConfig([
+                'host' => '127.0.0.1',
+                'port' => '6379',
+                'serialize' => \EasySwoole\Redis\Config\RedisConfig::SERIALIZE_NONE,
+            ]);
+            $redis = new \EasySwoole\Redis\Redis($config);
 
-            $rst = compact('data', 'all', 'get', 'post', 'content', 'raw_array', 'header', 'server', 'cookie', 'company_id', 'jwtConfig');
+            // 注册消费进程 EasySwooleEvent::mainServerCreate ： EasySwooleEvent.php:49
+            $redis->rPush('copy_log', $rst);
+            */
+
             return $this->writeJson(200, $rst, 'OK');
 
         } catch (\Throwable $e) {

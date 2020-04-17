@@ -47,6 +47,9 @@ class Consumer extends AbstractProcess
 						if (!$rs) {
 							break;
 						}
+
+						// TODO 考虑使用协程，将获取的数据接收后，写入数据库
+
 						error_log( $this->getProcessName() . 'task run check: ' .$rs . "\r\n", 3, 'process.log');
                     } catch (\Throwable $e) {
                         break;
