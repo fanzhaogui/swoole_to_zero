@@ -40,7 +40,7 @@ class TestTask implements TaskInterface
      */
     function run(int $taskId, int $workerIndex)
     {
-        var_dump("templete task run : \n");
+        echo "templete task run : \n";
         var_dump($this->data);
         //只有同步调用才能返回数据
         return "return : ".$this->data['name'];
