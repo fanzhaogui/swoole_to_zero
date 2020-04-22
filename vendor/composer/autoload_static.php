@@ -4,12 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
+class ComposerStaticInit1db97bdb420bc9f0dade1cc08d1c6467
 {
     public static $files = array (
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
-        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -34,6 +34,7 @@ class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
         ),
         'L' => 
         array (
+            'League\\Plates\\' => 14,
             'Lcobucci\\JWT\\' => 13,
         ),
         'F' => 
@@ -45,9 +46,12 @@ class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
             'EasySwoole\\Validate\\' => 20,
             'EasySwoole\\Utility\\' => 19,
             'EasySwoole\\Trigger\\' => 19,
+            'EasySwoole\\Template\\' => 20,
             'EasySwoole\\Task\\' => 16,
             'EasySwoole\\Spl\\Test\\' => 20,
             'EasySwoole\\Spl\\' => 15,
+            'EasySwoole\\Socket\\' => 18,
+            'EasySwoole\\Smtp\\' => 16,
             'EasySwoole\\Session\\Test\\' => 24,
             'EasySwoole\\Session\\' => 19,
             'EasySwoole\\Redis\\' => 17,
@@ -107,6 +111,10 @@ class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
         ),
+        'League\\Plates\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/plates/src',
+        ),
         'Lcobucci\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
@@ -127,6 +135,10 @@ class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
         array (
             0 => __DIR__ . '/..' . '/easyswoole/trigger/src',
         ),
+        'EasySwoole\\Template\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyswoole/template/src',
+        ),
         'EasySwoole\\Task\\' => 
         array (
             0 => __DIR__ . '/..' . '/easyswoole/task/src',
@@ -138,6 +150,14 @@ class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
         'EasySwoole\\Spl\\' => 
         array (
             0 => __DIR__ . '/..' . '/easyswoole/spl/src',
+        ),
+        'EasySwoole\\Socket\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyswoole/socket/src',
+        ),
+        'EasySwoole\\Smtp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyswoole/smtp/src',
         ),
         'EasySwoole\\Session\\Test\\' => 
         array (
@@ -287,9 +307,9 @@ class ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb9f5df3749a0a8338b1ae8e47934ce6b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1db97bdb420bc9f0dade1cc08d1c6467::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1db97bdb420bc9f0dade1cc08d1c6467::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1db97bdb420bc9f0dade1cc08d1c6467::$classMap;
 
         }, null, ClassLoader::class);
     }

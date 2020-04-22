@@ -1,64 +1,57 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: yf
+ * Date: 2019-01-01
+ * Time: 20:06
+ */
+
 return [
-	'SERVER_NAME' => "EasySwoole",
-	'MAIN_SERVER' => [
-		'LISTEN_ADDRESS' => '0.0.0.0',
-		'PORT'           => 9501,
-		'SERVER_TYPE'    => EASYSWOOLE_WEB_SERVER,
-		//可选为 EASYSWOOLE_SERVER  EASYSWOOLE_WEB_SERVER EASYSWOOLE_WEB_SOCKET_SERVER,EASYSWOOLE_REDIS_SERVER
-		'SOCK_TYPE'      => SWOOLE_TCP,
-		'RUN_MODEL'      => SWOOLE_PROCESS,
-		'SETTING'        => [
-			'worker_num'    => 8,
-			'reload_async'  => true,
-			'max_wait_time' => 3,
-		],
-		'TASK'           => [
-			'workerNum'     => 4,
-			'maxRunningNum' => 128,
-			'timeout'       => 15,
-		],
-	],
-	'TEMP_DIR'    => null,
-	'LOG_DIR'     => null,
-
-	'MYSQL' => [
-		'host'     => '127.0.0.1',
-		'port'     => 3306,
-		'user'     => 'dev',
-		'password' => '3qma123456.',
-		'database' => 'bearadmin_demo',
-		'timeout'  => 5,
-		'charset'  => 'utf8mb4',
-	],
-
-    'REDIS' => [
-        'host'     => '127.0.0.1',
-        'port'     => 6379,
-        'timeout'  => 5,
+    'SERVER_NAME'    => "EasySwoole",
+    'MAIN_SERVER'    => [
+        'LISTEN_ADDRESS' => '0.0.0.0',
+        'PORT'           => 9501,
+        'SERVER_TYPE'    => EASYSWOOLE_WEB_SOCKET_SERVER, //可选为 EASYSWOOLE_SERVER  EASYSWOOLE_WEB_SERVER EASYSWOOLE_WEB_SOCKET_SERVER,EASYSWOOLE_REDIS_SERVER
+        'SOCK_TYPE'      => SWOOLE_TCP,
+        'RUN_MODEL'      => SWOOLE_PROCESS,
+        'SETTING'        => [
+            'worker_num'            => 8,
+            'reload_async'          => true,
+            'max_wait_time'         => 5,
+            'document_root'         => EASYSWOOLE_ROOT . '/Static',
+            'enable_static_handler' => true,
+        ],
+        'TASK'           => [
+            'workerNum' => 4, 'maxRunningNum' => 128, 'timeout' => 15
+        ]
+    ],
+    'TEMP_DIR'       => null,
+    'LOG_DIR'        => null,
+    'CONSOLE'        => [
+        'ENABLE'         => true,
+        'LISTEN_ADDRESS' => '127.0.0.1',
+        'HOST'           => '127.0.0.1',
+        'PORT'           => 9500,
+        'USER'           => 'root',
+        'PASSWORD'       => '123456'
+    ],
+    'DISPLAY_ERROR'  => true,
+    'PHAR'           => [
+        'EXCLUDE' => ['.idea', 'Log', 'Temp', 'easyswoole', 'easyswoole.install']
     ],
 
-	'JWT' => [
-		//token在header中的name
-		'name'                   => 'token',
-		//token加密使用的secret
-		'secret'                 => '552ac90778a976c72f7f673db174df30',
-		//颁发者
-		'iss'                    => 'iss',
-		//使用者
-		'aud'                    => 'aud',
-		//过期时间，以秒为单位，默认2小时。提示：感觉刷新麻烦的可以设置的大一些，比如10年20年之类的
-		'ttl'                    => 7200,
-		//刷新时间，以秒为单位，默认14天。提示：只有过期时间到了才会生效，所以把过期时间设置的很大的懒人就可以忽略了
-		'refresh_ttl'            => 1209600,
-		//是否自动刷新，开启后可自动刷新token，附在header中返回，name为`Authorization`,字段为`Bearer `+$token
-		'auto_refresh'           => true,
-		//黑名单宽限期，以秒为单位，首次token刷新之后在此时间内原token可以继续访问
-		'blacklist_grace_period' => 60
-	],
-
-    ## socket
     // 当前的域名
     'HOST'           => 'http://127.0.0.1:9501',
     'WEBSOCKET_HOST' => 'ws://127.0.0.1:9501',
+
+
+    'CHECK_EMAIL'   => true,
+    'EMAIL_SETTING' => [
+        'PORT'     => 465,
+        'FORM'     => 'EASY-DEMO <mipone@foxmail.com>',
+        'SERVER'   => 'smtp.qq.com',
+        'SECURE'   => true,
+        'USERNAME' => 'mipone@foxmail.com',
+        'PASSWORD' => 'abltlnhpmdyfbcga',
+    ]
 ];

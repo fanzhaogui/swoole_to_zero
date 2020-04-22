@@ -52,8 +52,8 @@
             <div class="windows_top">
                 <div class="windows_top_left"><i class="am-icon am-icon-list online-list"></i> 欢迎乘坐特快列车</div>
                 <div class="windows_top_right">
-                    <a href="https://github.com/easy-swoole/demo/tree/3.x-chat" target="_blank"
-                       style="color: #999">查看源码</a>
+<!--                    <a href="https://github.com/easy-swoole/demo/tree/3.x-chat" target="_blank"-->
+<!--                       style="color: #999">查看源码</a>-->
                 </div>
             </div>
             <div class="windows_body" id="chat-window" v-scroll-bottom>
@@ -189,6 +189,8 @@
                     websocketServer += '?username=' + encodeURIComponent(username)
                 }
                 this.websocketInstance = new WebSocket(websocketServer);
+                console.log('WebSocket')
+                console.log(this.websocketInstance)
                 this.websocketInstance.onopen = function (ev) {
                     // 断线重连处理
                     if (othis.ReconnectBox) {
