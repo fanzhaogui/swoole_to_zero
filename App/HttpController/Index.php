@@ -15,6 +15,7 @@ class Index extends BaseController
 
     function index()
     {
+        return parent::index();
         ## 异步模板任务 ##
         $task = TaskManager::getInstance();
         // 异步
