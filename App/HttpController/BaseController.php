@@ -44,6 +44,12 @@ class BaseController extends Controller
         return $clientAddress;
     }
 
+    /**
+     * 获取参数
+     * @param string $name 参数键名
+     * @param mixed $default 默认值
+     * @return array|mixed|null
+     */
     protected function input($name, $default = null) 
     {
         $value = $this->request()->getRequestParam($name);

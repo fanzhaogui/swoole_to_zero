@@ -13,6 +13,9 @@ class UserModel extends AbstractModel
 
 	/**
 	 * 获取列表
+     *
+     * @property $page
+     * @property $keyword
 	 */
 	public function getAll(int $page = 1, string $keyword = null, int $pageSize = 10): array
 	{

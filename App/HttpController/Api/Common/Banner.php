@@ -21,13 +21,14 @@ class Banner extends CommonBase
      * @Param(name="bannerId", alias="主键id", required="", integer="")
      * @throws \EasySwoole\ORM\Exception\Exception
      * @throws \Throwable
-     * @author Tioncico
-     * Time: 14:03
+     *
+     * @api ssc.3qma.com:9501/Api/Common/Banner/getOne
      */
     public function getOne()
     {
         $param = $this->request()->getRequestParam();
         $model = new BannerModel();
+        // 参数 bannerId 验证？
         $model->bannerId = $param['bannerId'];
         $bean  = $model->get();
         if ($bean) {
@@ -42,8 +43,8 @@ class Banner extends CommonBase
      * @Param(name="page", alias="页数", optional="", integer="")
      * @Param(name="limit", alias="每页总数", optional="", integer="")
      * @Param(name="keyword", alias="关键字", optional="", lengthMax="32")
-     * @author Tioncico
-     * Time: 14:02
+     *
+     * @api ssc.3qma.com:9501/Api/Common/Banner/getAll
      */
     public function getAll()
     {
